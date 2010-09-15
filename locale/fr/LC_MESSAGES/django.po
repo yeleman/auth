@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-15 16:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+
+#: handlers/language.py:36
+msgid "To set your language, send LANGUAGE <CODE>"
+msgstr "Pour choisir votre langue, envoyez: LANGUE <CODE>"
+
+#: handlers/language.py:47
+msgid ""
+"You must JOIN or IDENTIFY yourself before you can set your language "
+"preference."
+msgstr ""
+"Vous devez vous inscrire ou vous identifier avant de choisir votre langue. "
+"Utilisez INSCRIPTION."
+
+#: handlers/language.py:55
+#, python-format
+msgid "I will speak to you in %(language)s."
+msgstr "Nous communiquerons désormais avec vous en %(language)s."
+
+#: handlers/language.py:58
+#, python-format
+msgid "Sorry, I don't speak \"%(language)s\"."
+msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
+
+#: handlers/register.py:58
+msgid "To register, send: JOIN <NAME>"
+msgstr "Pour vous enregistrer, envoyez : Inscription <Prenom Nom>"
+
+#: handlers/register.py:76
+#, python-format
+msgid "You are already registered, %(name)s"
+msgstr "Vous êtes déjà enregistré, %(name)s"
+
+#: handlers/register.py:80
+#, python-format
+msgid "We changed your name from, '%(old_name)s' to '%(new_name)s'"
+msgstr "Votre nom a été changé de '%(old_name)s' à '%(new_name)s'"
+
+#: handlers/register.py:89
+#, python-format
+msgid "Thank you for registering, %(name)s!"
+msgstr "Merci de vous être enregistré, %(name)s!"
+
+#~ msgid "French"
+#~ msgstr "Français"

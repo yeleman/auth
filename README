@@ -1,0 +1,7 @@
+The registration_ng app provides a interface for creating, updating,
+and deleting RapidSMS contacts as rapidsms.contrib.registration does, but
+allowing i18n for keywords and some special anwsers if the contact already
+exists.
+
+The code is based on the one from rapidsms.contrib.registration and hence
+share the same licence.
