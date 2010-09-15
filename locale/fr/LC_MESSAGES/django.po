@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-15 16:50+0000\n"
+"POT-Creation-Date: 2010-09-15 22:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: handlers/language.py:36
+#: handlers/language.py:37
 msgid "To set your language, send: LANGUAGE <CODE>"
 msgstr "Pour choisir votre langue, envoyez: LANGUE <CODE>"
 
-#: handlers/language.py:47
+#: handlers/language.py:45
 msgid ""
 "You must JOIN or IDENTIFY yourself before you can set your language "
 "preference."
@@ -34,7 +34,7 @@ msgstr ""
 msgid "I will speak to you in %(language)s."
 msgstr "Nous communiquerons désormais avec vous en %(language)s."
 
-#: handlers/language.py:58
+#: handlers/language.py:60
 #, python-format
 msgid "Sorry, I don't speak \"%(language)s\"."
 msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
@@ -53,10 +53,14 @@ msgstr "Vous êtes déjà enregistré, %(name)s"
 msgid "We changed your name from, '%(old_name)s' to '%(new_name)s'"
 msgstr "Votre nom a été changé de '%(old_name)s' à '%(new_name)s'"
 
-#: handlers/register.py:89
+#: handlers/register.py:91
 #, python-format
 msgid "Thank you for registering, %(name)s!"
 msgstr "Merci de vous être enregistré, %(name)s!"
+
+#: handlers/register.py:94
+msgid "Registration are closed. Ask your administrator for more informations"
+msgstr "Les inscriptions sont fermées. Demandez à votre administrateur pour plus d'informations"
 
 #~ msgid "French"
 #~ msgstr "Français"

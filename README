@@ -24,6 +24,7 @@ Requirements
     - Django 1.2+
     - RapidSMS 1+ 
     - handlers_i18n (http://github.com/yeleman/handlers_i18n)
+    - [optional] dbsettings
 
 Setup
 =====
@@ -34,6 +35,7 @@ Setup
     - Removes 'rapidsms.contrib.registration' from INSTALLED_APPS and RAPIDSMS_TABS
     - Optionnally, add ("register_ng.views.registration", "Registration") to
       RAPIDSMS_TABS
+    - Optionally, install 'django_simple_config' (http://github.com/yeleman/django-simple-config)
   
 Usage
 =====
@@ -70,3 +72,12 @@ E.g::
                                     ('en-us', ('lang', 'dialect')),
                                     ('es', ('lingua',)),
                                   )
+
+Closing registrations
+=====================
+                                  
+If django_simple_config is installed, you will be able to set configuration
+values in the Django admin. Set a value 'close_registrations' to the string
+"1" (without quotes) to close the registration, and to "0" to reopen them.
+
+Without django_simple_config, the registrations will simply stay always open.

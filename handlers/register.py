@@ -7,6 +7,7 @@ from handlers_i18n.handlers.keyword import KeywordHandlerI18n
 from rapidsms.models import Contact
 from django.utils.translation import ugettext as _
 from django.conf import settings
+from ..utils import are_registrations_closed
 
 
 class RegisterHandler(KeywordHandlerI18n):
@@ -82,9 +83,16 @@ class RegisterHandler(KeywordHandlerI18n):
                 contact.name = text
                 contact.save()
         else:
-    
-            conn.contact = Contact.objects.create(name=text, language=lang_code)
-            conn.save()
-            msg = _(u"Thank you for registering, %(name)s!") % {'name': text}
+        
+            if not are_registrations_closed():
+                conn.contact = Contact.objects.create(name=text, 
+                                                      language=lang_code)
+                conn.save()
+                msg = _(u"Thank you for registering, %(name)s!") % { 
+                        'name': text}
+            else:
+                msg = _(u"Registration are closed. Ask your administrator for "\
+                        u"more informations")
+            
 
         self.respond(msg)
