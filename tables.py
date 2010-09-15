@@ -7,6 +7,7 @@ from djtables import Table, Column
 from rapidsms.models import Contact
 
 
+
 def _edit_link(cell):
     return reverse(
         "registration_edit",

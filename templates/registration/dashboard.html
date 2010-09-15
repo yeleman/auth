@@ -26,6 +26,22 @@
 
 	<form action="" method="post">
 		{% render_form contact_form %}
+
+		<div style="padding:0 0 1.5em 1em; background-color:#FFFFFF;">
+		    <div class="field identity">
+		        <label for="id_identity">Identity</label>
+		        <input id="id_identity" type="text" name="identity" />
+		    </div>
+		    <div class="field backend">
+		        <label class="field backend" for="id_backend">Backend</label>
+		        <select id="id_backend" name="backend">
+                    {% for backend in backends %}
+                    <option value="{{ backend.pk }}">{{ backend.name }}</backend>
+                    {% endfor %}
+                </select> 
+	        </div>
+	    </div>
+	    
 		{% csrf_token %}
 
 		<div class="submit">

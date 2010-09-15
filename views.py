@@ -9,9 +9,7 @@ from django.http import HttpResponseRedirect
 from django.db import transaction
 from django.shortcuts import render_to_response, get_object_or_404
 from rapidsms.forms import ContactForm
-from rapidsms.models import Contact
-from rapidsms.models import Connection
-from rapidsms.models import Backend
+from rapidsms.models import Contact, Connection, Backend
 from .tables import ContactTable
 from .forms import BulkRegistrationForm
 
@@ -57,6 +55,11 @@ def registration(req, pk=None):
 
             if contact_form.is_valid():
                 contact = contact_form.save()
+                identity = req.POST.get('identity', '')
+                if identity:
+                    backend = Backend.objects.get(pk=req.POST['backend'])
+                    conn = Connection(identity=identity, backend=backend)
+                    contact.connection_set.add(conn)
                 return HttpResponseRedirect(
                     reverse(registration))
 
@@ -64,12 +67,14 @@ def registration(req, pk=None):
         contact_form = ContactForm(
             instance=contact)
         bulk_form = BulkRegistrationForm()
+        
 
     return render_to_response(
         "registration/dashboard.html", {
             "contacts_table": ContactTable(Contact.objects.all(), request=req),
             "contact_form": contact_form,
             "bulk_form": bulk_form,
-            "contact": contact
+            "contact": contact,
+            "backends": Backend.objects.all(),
         }, context_instance=RequestContext(req)
     )
