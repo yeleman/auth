@@ -58,8 +58,9 @@ def registration(req, pk=None):
                 identity = req.POST.get('identity', '')
                 if identity:
                     backend = Backend.objects.get(pk=req.POST['backend'])
-                    conn = Connection(identity=identity, backend=backend)
-                    contact.connection_set.add(conn)
+                    con, c = Connection.objects.get_or_create(identity=identity, 
+                                                            backend=backend)
+                    contact.connection_set.add(con)
                 return HttpResponseRedirect(
                     reverse(registration))
 

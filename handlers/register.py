@@ -23,10 +23,7 @@ class RegisterHandler(KeywordHandlerI18n):
     The module will respond according to the language of the keyword::
         
         >>> RegisterHandler.test('inscription Bob')
-        ['Merci de vous être enregistré, Bob! ']
-
-        >>> Contact.objects.filter(name="Bob").latest('id').language
-        'fr'
+        ['Merci de vous être enregistré, Bob!']
 
     Note that the ``name`` field of the Contact model is not constrained
     to be unique, so this handler does not reject duplicate names. If
@@ -52,7 +49,9 @@ class RegisterHandler(KeywordHandlerI18n):
                )
         
     aliases += getattr(settings, 'RAPIDSMS_REGISTRATION_ALIASES', ())
-        
+    
+    AUTO_SET_LANG = getattr(settings, 'RAPIDSMS_REGISTRATION_AUTO_SET_LANG',
+                             True)
 
     def help(self, keyword, lang_code):
         self.respond(_(u"To register, send: JOIN <NAME>"))

@@ -4,8 +4,6 @@
 
 from django import forms
 
-# todo: make it able to add an identity with a connection
-
 
 # the built-in FileField doesn't specify the 'size' attribute, so the
 # widget is rendered at its default width -- which is too wide for our

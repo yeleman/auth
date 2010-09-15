@@ -25,7 +25,7 @@ class TestRegister(TestScript):
     def testHelp(self):
         self.assertInteraction("""
           8005551212 > lang
-          8005551212 < To set your language, send LANGUAGE <CODE>
+          8005551212 < To set your language, send: LANGUAGE <CODE>
           8005551212 > register
-          8005551212 < To register, send JOIN <NAME>
+          8005551212 < To register, send: JOIN <NAME>
         """)

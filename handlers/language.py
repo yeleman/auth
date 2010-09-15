@@ -4,7 +4,7 @@
 
 from handlers_i18n.handlers.keyword import KeywordHandlerI18n
 from rapidsms.models import Contact
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _, activate
 from django.conf import settings
 
 
@@ -30,30 +30,32 @@ class LanguageHandlerI18n(KeywordHandlerI18n):
               )
               
     aliases += getattr(settings, 'RAPIDSMS_LANGUAGES_ALIASES', ())
+    
+    AUTO_SET_LANG = getattr(settings, 'RAPIDSMS_LANGUAGES_AUTO_SET_LANG', True)
 
-
-    def help(self):
-        self.respond(_(u"To set your language, send LANGUAGE <CODE>"))
+    def help(self, keyword, lang_code):
+        self.respond(_(u"To set your language, send: LANGUAGE <CODE>"))
 
 
     def handle(self, text, keyword, lang_code):
     
-        print text
-        print lang_code
-        
         contact = self.msg.connection.contact
         if not contact:
             return self.respond_error(
                 _(u"You must JOIN or IDENTIFY yourself before you can "\
                   u"set your language preference."))
-             
+           
         t = text.lower().strip()
         for code, name in settings.LANGUAGES:
             if t in (code.lower().strip(), name.lower().strip()):
+                Contact.objects.filter(pk=contact.pk).update(language=code)
                 contact.language = code
-                contact.save()
+                activate(code)
+                
                 return self.respond(_(u"I will speak to you in %(language)s.") % {
                                       'language': _(name)})
 
-        return self.respond_error(_(u'Sorry, I don\'t speak "%(language)s".'),
-                                    language=text)
+        # todo: this doesn't work with unicode because of a bug in outgoing.py
+        # (it uses gettext instead of ugettext)
+        return self.respond_error(_(u'Sorry, I don\'t speak "%(language)s".') % {
+                                    'language': text})

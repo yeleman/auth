@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #: handlers/language.py:36
-msgid "To set your language, send LANGUAGE <CODE>"
+msgid "To set your language, send: LANGUAGE <CODE>"
 msgstr "Pour choisir votre langue, envoyez: LANGUE <CODE>"
 
 #: handlers/language.py:47
