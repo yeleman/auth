@@ -3,7 +3,7 @@
 
 
 from django import forms
-
+from django.utils.translation import ugettext as _
 
 # the built-in FileField doesn't specify the 'size' attribute, so the
 # widget is rendered at its default width -- which is too wide for our
@@ -15,8 +15,8 @@ class SmallFileField(forms.FileField):
 
 class BulkRegistrationForm(forms.Form):
     bulk = SmallFileField(
-        label="Upload CSV file",
+        label=_(u"Upload CSV file"),
         required=False,
-        help_text="Upload a <em>plain text file</em> " +
-                  "containing a single contact per line, for example: <br/>" +
-                  "<em>firstname lastname, backend_name, identity</em>")
+        help_text=_(u"Upload a <em>plain text file</em> " +
+                  u"containing a single contact per line, for example: <br/>" +
+                  u"<em>firstname lastname, backend_name, identity</em>"))
