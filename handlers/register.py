@@ -11,20 +11,20 @@ from ..utils import are_registrations_closed
 
 
 class RegisterHandler(KeywordHandlerI18n):
-    """
+    u"""
     Allow remote users to register themselves, by creating a Contact
     object and associating it with their Connection. For example::
 
         >>> RegisterHandler.test('join Adam Mckaig')
-        ['Thank you for registering, Adam Mckaig!']
+        [u'Thank you for registering, Adam Mckaig!']
 
         >>> Contact.objects.filter(name="Adam Mckaig")
         [<Contact: Adam Mckaig>]
         
     The module will respond according to the language of the keyword::
         
-        >>> RegisterHandler.test('inscription Bob')
-        ['Merci de vous être enregistré, Bob!']
+        >>> print RegisterHandler.test('inscription Bob', identity='123')[0]
+        Merci de vous être enregistré, Bob!
 
     Note that the ``name`` field of the Contact model is not constrained
     to be unique, so this handler does not reject duplicate names. If
@@ -45,7 +45,7 @@ class RegisterHandler(KeywordHandlerI18n):
     keyword = "register"
 
     aliases = (
-               ('en-us', ('reg', 'join',)),
+               ('en-us', ('reg', 'join', 'register')),
                ('fr', ('inscription', 'rejoindre',)),
                )
         

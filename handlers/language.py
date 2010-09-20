@@ -8,7 +8,7 @@ from django.utils.translation import ugettext as _, activate
 from django.conf import settings
 
 
-from register_ng.decorators import registration_required
+from ..decorators import registration_required
 
 
 class LanguageHandlerI18n(KeywordHandlerI18n):
