@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-15 22:38+0000\n"
+"POT-Creation-Date: 2010-09-20 11:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
+#: decorators.py:32
+#, python-format
+msgid ""
+"You must be registered to do this. Send: REGISTER <first name> <last name>"
+msgstr ""
+"Vous devez être enregistré pour faire cela. Envoyez: INSCRIPTION <prénom> <nom>"
+
+#: forms.py:18 models.py:18
+msgid "Upload CSV file"
+msgstr "Envoyer fichier CSV"
+
+#: forms.py:20 models.py:20
+msgid "Upload a <em>plain text file</em> "
+msgstr "Envoyez un <em>fichier texte</em> "
+
 #: handlers/language.py:37
 msgid "To set your language, send: LANGUAGE <CODE>"
 msgstr "Pour choisir votre langue, envoyez: LANGUE <CODE>"
 
-#: handlers/language.py:45
-msgid ""
-"You must JOIN or IDENTIFY yourself before you can set your language "
-"preference."
-msgstr ""
-"Vous devez vous inscrire ou vous identifier avant de choisir votre langue. "
-"Utilisez INSCRIPTION."
 
 #: handlers/language.py:55
 #, python-format
@@ -41,26 +49,28 @@ msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
 
 #: handlers/register.py:58
 msgid "To register, send: JOIN <NAME>"
-msgstr "Pour vous enregistrer, envoyez : Inscription <Prenom Nom>"
+msgstr "Pour vous enregistrer, envoyez : INSCRIPTION <Prenom> <Nom>"
 
-#: handlers/register.py:76
+#: handlers/register.py:77
 #, python-format
 msgid "You are already registered, %(name)s"
 msgstr "Vous êtes déjà enregistré, %(name)s"
 
-#: handlers/register.py:80
+#: handlers/register.py:81
 #, python-format
 msgid "We changed your name from, '%(old_name)s' to '%(new_name)s'"
 msgstr "Votre nom a été changé de '%(old_name)s' à '%(new_name)s'"
 
-#: handlers/register.py:91
+#: handlers/register.py:92
 #, python-format
 msgid "Thank you for registering, %(name)s!"
 msgstr "Merci de vous être enregistré, %(name)s!"
 
-#: handlers/register.py:94
+#: handlers/register.py:95
 msgid "Registration are closed. Ask your administrator for more informations"
-msgstr "Les inscriptions sont fermées. Demandez à votre administrateur pour plus d'informations"
+msgstr ""
+"Les inscriptions sont fermées. Demandez à votre administrateur pour plus "
+"d'informations"
 
 #~ msgid "French"
 #~ msgstr "Français"

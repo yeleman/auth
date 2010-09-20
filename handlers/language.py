@@ -8,6 +8,9 @@ from django.utils.translation import ugettext as _, activate
 from django.conf import settings
 
 
+from register_ng.decorators import registration_required
+
+
 class LanguageHandlerI18n(KeywordHandlerI18n):
     """
     Allow remote users to set their preferred language, by updating the
@@ -25,7 +28,7 @@ class LanguageHandlerI18n(KeywordHandlerI18n):
     keyword = "language"
     
     aliases = (
-                ('en-us', ('lang',)),
+                ('en-us', ('lang', 'language')),
                 ('fr', ('langue', 'langage')),
               )
               
@@ -37,6 +40,7 @@ class LanguageHandlerI18n(KeywordHandlerI18n):
         self.respond(_(u"To set your language, send: LANGUAGE <CODE>"))
 
 
+    @registration_required()
     def handle(self, text, keyword, lang_code):
     
         contact = self.msg.connection.contact
