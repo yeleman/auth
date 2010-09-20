@@ -16,7 +16,7 @@ from code_generator.fields import CodeField
 
 class Role(models.Model):
     
-    code = CodeField(verbose_name=_("Code"),  max_length=12, prefix='r')
+    code = CodeField(verbose_name=__("Code"),  max_length=12, prefix='r')
     contacts = models.ManyToManyField(Contact, verbose_name=__(u'Contacts'))
     group = models.ForeignKey(Group, verbose_name=__(u'Group'), 
                               related_name='roles')
@@ -41,8 +41,9 @@ class Role(models.Model):
         
     
     def __unicode__(self):
-        return _(u"%(group)s for %(context)s") % {'group': self.group,
-                                                  'context': self.context}
+        return _(u"%(group)s for %(context)s") % {
+                 'group': _(unicode(self.group)),
+                 'context': _(unicode(self.context))}
       
       
     @classmethod

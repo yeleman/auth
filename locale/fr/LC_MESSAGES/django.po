@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-20 11:14+0000\n"
+"POT-Creation-Date: 2010-09-20 20:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: decorators.py:32
-#, python-format
+#: decorators.py:31 decorators.py:68
 msgid ""
 "You must be registered to do this. Send: REGISTER <first name> <last name>"
 msgstr ""
-"Vous devez être enregistré pour faire cela. Envoyez: INSCRIPTION <prénom> <nom>"
+"Vous devez être enregistré pour faire cela. Envoyez: INSCRIPTION <prénom> "
+"<nom>"
 
-#: forms.py:18 models.py:18
+#: decorators.py:78
+#, python-format
+msgid "You must be %(role)s to do this"
+msgstr "You must be %(role)s to do this"
+
+#: forms.py:18
 msgid "Upload CSV file"
 msgstr "Envoyer fichier CSV"
 
-#: forms.py:20 models.py:20
+#: forms.py:20
 msgid "Upload a <em>plain text file</em> "
 msgstr "Envoyez un <em>fichier texte</em> "
 
-#: handlers/language.py:37
+#: models.py:44
+#, python-format
+msgid "%(group)s for %(context)s"
+msgstr "%(group)s pour %(context)s"
+
+#: extensions/rapidsms/contact.py:66
+#, python-format
+msgid "The user %(user)s is already associated with the contact %(contact)s"
+msgstr "L'utilisateur %(user)s est déjà associé avec le contact %(contact)s"
+
+#: handlers/language.py:40
 msgid "To set your language, send: LANGUAGE <CODE>"
 msgstr "Pour choisir votre langue, envoyez: LANGUE <CODE>"
 
-
-#: handlers/language.py:55
+#: handlers/language.py:57
 #, python-format
 msgid "I will speak to you in %(language)s."
 msgstr "Nous communiquerons désormais avec vous en %(language)s."
 
-#: handlers/language.py:60
+#: handlers/language.py:62
 #, python-format
 msgid "Sorry, I don't speak \"%(language)s\"."
 msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
@@ -51,26 +65,31 @@ msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
 msgid "To register, send: JOIN <NAME>"
 msgstr "Pour vous enregistrer, envoyez : INSCRIPTION <Prenom> <Nom>"
 
-#: handlers/register.py:77
+#: handlers/register.py:76
 #, python-format
 msgid "You are already registered, %(name)s"
 msgstr "Vous êtes déjà enregistré, %(name)s"
 
-#: handlers/register.py:81
+#: handlers/register.py:80
 #, python-format
 msgid "We changed your name from, '%(old_name)s' to '%(new_name)s'"
 msgstr "Votre nom a été changé de '%(old_name)s' à '%(new_name)s'"
 
-#: handlers/register.py:92
+#: handlers/register.py:91
 #, python-format
 msgid "Thank you for registering, %(name)s!"
 msgstr "Merci de vous être enregistré, %(name)s!"
 
-#: handlers/register.py:95
+#: handlers/register.py:94
 msgid "Registration are closed. Ask your administrator for more informations"
 msgstr ""
 "Les inscriptions sont fermées. Demandez à votre administrateur pour plus "
 "d'informations"
+
+#: handlers/role.py:32
+msgid "To give you a role, send: ROLE <code1> <code2>"
+msgstr "Pour vous attribuer un role, envoyez: ROLE <code1> <code2>"
+
 
 #~ msgid "French"
 #~ msgstr "Français"

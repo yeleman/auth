@@ -39,15 +39,10 @@ class LanguageHandlerI18n(KeywordHandlerI18n):
     def help(self, keyword, lang_code):
         self.respond(_(u"To set your language, send: LANGUAGE <CODE>"))
 
-
     @registration_required()
     def handle(self, text, keyword, lang_code):
     
         contact = self.msg.connection.contact
-        if not contact:
-            return self.respond_error(
-                _(u"You must JOIN or IDENTIFY yourself before you can "\
-                  u"set your language preference."))
            
         t = text.lower().strip()
         for code, name in settings.LANGUAGES:
@@ -62,4 +57,4 @@ class LanguageHandlerI18n(KeywordHandlerI18n):
         # todo: this doesn't work with unicode because of a bug in outgoing.py
         # (it uses gettext instead of ugettext)
         return self.respond_error(_(u'Sorry, I don\'t speak "%(language)s".') % {
-                                    'language': text})
+                                    'language': _(text)})

@@ -32,17 +32,12 @@ class RoleBasesAdvanced(TestCase):
         self.assertTrue(self.contact.is_registered())
         contact = Contact.objects.create(name='Steve')
         self.assertFalse(contact.is_registered())
-        
-    # todo : 
-    # decorator with @require_role(role, group, context), @require_credential(roles=[], groups[], permission=[]), @require_one_credential(roles=[], groups[], permission=[])
-    #   
-    #@require_registration
+
+     # todo:        
      # register role
      # unregister role
      # unregister
-    # merge role and register
     
-    # todo: @forbidden_to_role, @forbidden_to_group
     
 
     
