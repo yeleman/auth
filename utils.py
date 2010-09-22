@@ -48,6 +48,8 @@ def require_role(message, role=None, group=None, context=None, carry_on=False):
         
     role_obj = contact.role_set.model.objects.get_role(role, group, context)
     
+    from django.utils import translation
+    
     if not contact.has_role(role_obj):
         raise ExitHandle(_(u"You must be %(role)s to do this") % {
                            'role': role_obj}, carry_on)

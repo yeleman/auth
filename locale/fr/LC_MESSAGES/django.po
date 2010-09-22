@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-20 23:11+0000\n"
+"POT-Creation-Date: 2010-09-22 09:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,18 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-
-#: decorators.py:31 decorators.py:68
-msgid ""
-"You must be registered to do this. Send: REGISTER <first name> <last name>"
-msgstr ""
-"Vous devez être enregistré pour faire cela. Envoyez: INSCRIPTION <prénom> "
-"<nom>"
-
-#: decorators.py:78
-#, python-format
-msgid "You must be %(role)s to do this"
-msgstr "You must be %(role)s to do this"
 
 #: forms.py:18
 msgid "Upload CSV file"
@@ -37,10 +25,22 @@ msgstr "Envoyer fichier CSV"
 msgid "Upload a <em>plain text file</em> "
 msgstr "Envoyez un <em>fichier texte</em> "
 
-#: models.py:44
+#: models.py:83
 #, python-format
 msgid "%(group)s of %(context)s"
 msgstr "%(group)s de %(context)s"
+
+#: utils.py:36
+msgid ""
+"You must be registered to do this. Send: REGISTER <first name> <last name>"
+msgstr ""
+"Vous devez être enregistré pour faire cela. Envoyez: INSCRIPTION <prénom> "
+"<nom>"
+
+#: utils.py:52
+#, python-format
+msgid "You must be %(role)s to do this"
+msgstr "Vous devez être %(role)s pour faire cela"
 
 #: extensions/rapidsms/contact.py:66
 #, python-format

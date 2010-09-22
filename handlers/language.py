@@ -8,7 +8,7 @@ from django.utils.translation import ugettext as _, activate
 from django.conf import settings
 
 
-from ..decorators import registration_required, role_required
+from ..decorators import registration_required
 
 
 class LanguageHandlerI18n(KeywordHandlerI18n):
@@ -39,7 +39,7 @@ class LanguageHandlerI18n(KeywordHandlerI18n):
     def help(self, keyword, lang_code):
         self.respond(_(u"To set your language, send: LANGUAGE <CODE>"))
 
-    @role_required('r001')
+    @registration_required()
     def handle(self, text, keyword, lang_code):
     
         contact = self.msg.connection.contact
