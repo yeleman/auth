@@ -45,7 +45,7 @@ class RegisterHandler(KeywordHandlerI18n):
     keyword = "register"
 
     aliases = (
-               ('en-us', ('reg', 'join', 'register')),
+               ('en', ('reg', 'join', 'register')),
                ('fr', ('inscription', 'rejoindre',)),
                )
         
@@ -60,10 +60,11 @@ class RegisterHandler(KeywordHandlerI18n):
 
     def handle(self, text, keyword, lang_code):
     
+    
         conn = self.msg.connection
         contact = conn.contact
         
-        if contact:
+        if contact and contact.is_registered():
         
             if self.flatten_string(contact.name) == self.flatten_string(text):
                 msg =  _(u"You are already registered, %(name)s") % {
@@ -73,10 +74,8 @@ class RegisterHandler(KeywordHandlerI18n):
                 msg =  _(u"We changed your name from, '%(old_name)s' to "\
                          u"'%(new_name)s'") % { 'old_name': contact.name, 
                                             'new_name': text }
-                contact.name = text
-                contact.save()
+                Contact.objects.filter(pk=contact.pk).update(name=text)
         else:
-        
             if not are_registrations_closed():
                 conn.contact = Contact.objects.create(name=text, 
                                                       language=lang_code)
@@ -86,6 +85,5 @@ class RegisterHandler(KeywordHandlerI18n):
             else:
                 msg = _(u"Registration are closed. Ask your administrator for "\
                         u"more informations")
-            
 
         self.respond(msg)

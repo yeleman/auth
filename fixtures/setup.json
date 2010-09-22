@@ -1,0 +1,38 @@
+[
+    {
+        "pk": 2, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "system", 
+            "first_name": "System", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$1cf09$72676e42eff263733facfcef99dc5a774b7829c9", 
+            "email": ""
+        }
+    },
+    
+    {
+        "pk": 1, 
+        "model": "rapidsms.contact", 
+        "fields": {
+            "name": "System", 
+            "language": "en", 
+            "user": 2
+        }
+    }, 
+
+    {
+        "pk": 2, 
+        "model": "rapidsms.connection", 
+        "fields": {
+            "contact": 1, 
+            "identity": "1", 
+            "backend": 1
+        }
+    }
+]

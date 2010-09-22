@@ -27,14 +27,16 @@ class WebContact(models.Model):
         """
     
         try:
+            from rapidsms.models import *
             username = self.default_connection.identity
         except AttributeError:
             username = slugify(self.name)
             if User.objects.filter(username=username).exists():
-                username = "%s_%s" % ('ID', slugify(self.name)) 
+                    username = "%s_%s" % ('ID', slugify(self.name)) 
         else:
             if User.objects.filter(username=username).exists():
                 username = "%s_%s" % (username, slugify(self.name),) 
+                
         return User.objects.create(username=username)
 
 
@@ -119,21 +121,10 @@ class WebContact(models.Model):
         if not create:
             return self.role_set.add(role_mgr.get_role(role, group, context)) 
             
-        if not (group or context):
-            raise ValueError(u'You must provide a role or a group '\
-                             u'AND a context') 
-
-        gr_name = getattr(group, 'name', group)
-        ctype = ContentType.objects.get_for_model(context)
-
-        group, group_created = Group.objects.get_or_create(name=gr_name)
+        role, role_created, group_created = role_mgr.get_role(role, group, 
+                                                               context, create)
+        self.role_set.add(role)
         
-        role, role_created = role_mgr.get_or_create(group=group,
-                                                    context_type=ctype, 
-                                                  context_id=context.id)
-
-        self.role_set.add(role) 
-                                                           
         return role, role_created, group_created
         
 
