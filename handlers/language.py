@@ -4,6 +4,7 @@
 
 from handlers_i18n.handlers.keyword import KeywordHandlerI18n
 from rapidsms.models import Contact
+from django.utils import translation
 from django.utils.translation import ugettext as _, activate
 from django.conf import settings
 
@@ -28,16 +29,18 @@ class LanguageHandlerI18n(KeywordHandlerI18n):
     keyword = "language"
     
     aliases = (
-                ('en-us', ('lang', 'language')),
+                ('en', ('lang', 'language')),
                 ('fr', ('langue', 'langage')),
               )
               
-    aliases += getattr(settings, 'RAPIDSMS_LANGUAGES_ALIASES', ())
+    aliases += getattr(settings, 'RAPIDSMS_LANGUAGE_ALIASES', ())
     
-    AUTO_SET_LANG = getattr(settings, 'RAPIDSMS_LANGUAGES_AUTO_SET_LANG', True)
+    AUTO_SET_LANG = getattr(settings, 'RAPIDSMS_LANGUAGE_AUTO_SET_LANG', True)
 
     def help(self, keyword, lang_code):
-        self.respond(_(u"To set your language, send: LANGUAGE <CODE>"))
+        return self.respond(_(u"To choose you language, send: LANGUAGE "\
+                              u"<language name>"))
+
 
     @registration_required()
     def handle(self, text, keyword, lang_code):

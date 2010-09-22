@@ -30,7 +30,7 @@ class RoleHandler(KeywordHandlerI18n):
                              True)
 
     def help(self, keyword, lang_code):
-        self.respond(_(u"To give you a role, send: ROLE <code1> <code2>"))
+        self.respond(_(u"To give you a role, send: ROLE <code>"))
 
 
     @registration_required()
@@ -40,9 +40,9 @@ class RoleHandler(KeywordHandlerI18n):
         contact = conn.contact
         
         roles_code = (self.clean_string(code) for code in text.split())
-        roles = set()
+        to_add = set()
         roles_with_error = set()
-        contact_has_roles = set()
+        to_remove = set()
         
         for code in roles_code:
             try:
@@ -51,22 +51,32 @@ class RoleHandler(KeywordHandlerI18n):
                 roles_with_error.add(code)
             else:
                 if contact.has_role(role):
-                    contact_has_roles.add(role)
+                    to_remove.add(role)
                 else:
-                    roles.add(role)
-                    contact.role_set.add(role)
+                    to_add.add(role)
             
         if roles_with_error:    
             return self.respond(_(u"These roles do not exist: '%(roles)s'. "\
                                   u"Retry after correcting or removing them.") % {
                                    'roles': "', '".join(roles_with_error)})
         
-        if roles:                           
-            msg = _(u"You are now: '%(roles)s'.")
+        for role in to_add:
+            contact.role_set.add(role)
             
-            if contact_has_roles:
-                msg += _(u" You already have the other roles.")
+        for role in to_remove:
+            contact.role_set.remove(role)
+        
+        msg = ''
+        
+        if to_add:                           
+            msg += _(u"You are now: '%(to_add)s'. ") % {
+                     'to_add': "', '".join(unicode(r) for r in to_add) }
+            
+        if to_remove:
+            msg += _(u"You are not anymore: '%(to_remove)s'. ") % {
+                     'to_remove': "', '".join(unicode(r) for r in to_remove) }
 
-            self.respond(msg % {'roles': ", ".join(unicode(r) for r in roles)})
-        else:
-            self.respond(_(u"You already have these roles."))
+        self.respond(msg)
+        
+        
+# todo: make handlers accept multple class in one file

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-22 09:23+0200\n"
+"POT-Creation-Date: 2010-09-22 10:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 "Vous devez être enregistré pour faire cela. Envoyez: INSCRIPTION <prénom> "
 "<nom>"
 
-#: utils.py:52
+#: utils.py:54
 #, python-format
 msgid "You must be %(role)s to do this"
 msgstr "Vous devez être %(role)s pour faire cela"
@@ -47,19 +47,43 @@ msgstr "Vous devez être %(role)s pour faire cela"
 msgid "The user %(user)s is already associated with the contact %(contact)s"
 msgstr "L'utilisateur %(user)s est déjà associé avec le contact %(contact)s"
 
-#: handlers/language.py:40
-msgid "To set your language, send: LANGUAGE <CODE>"
-msgstr "Pour choisir votre langue, envoyez: LANGUE <CODE>"
+#: handlers/language.py:41
+msgid "To choose you language, send: LANGUAGE <language name>"
+msgstr "Pour choisir votre langue, envoyez : LANGUE <nom de la langue>"
 
-#: handlers/language.py:54
+#: handlers/language.py:57
 #, python-format
 msgid "I will speak to you in %(language)s."
 msgstr "Nous communiquerons désormais avec vous en %(language)s."
 
-#: handlers/language.py:59
+#: handlers/language.py:62
 #, python-format
 msgid "Sorry, I don't speak \"%(language)s\"."
 msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
+
+#: handlers/languages.py:40 handlers/languages.py:43
+#, fuzzy, python-format
+msgid ""
+"%(keyword)s must be sent with nothing else. Did you mean %(keyword_sing)s "
+"(singular)?"
+msgstr ""
+"%(keyword)s doit être envoyé sans rien après. Vouliez vous dire %(keyword_sing)s (au "
+"singulier) ?"
+
+#: handlers/languages.py:53
+#, python-format
+msgid "Your prefered language is: '%(language)s'. "
+msgstr "Vous langue préférée est : '%(language)s'. "
+
+#: handlers/languages.py:56
+#, python-format
+msgid "The current language is: '%(language)s'. "
+msgstr "La langue actuelle est : '%(language)s'. "
+
+#: handlers/languages.py:59
+#, python-format
+msgid "The language for the keyword '%(keyword)s' is: %(language)s."
+msgstr "La langue pour le mot clé '%(keyword)s' est : %(language)s."
 
 #: handlers/register.py:58
 msgid "To register, send: JOIN <NAME>"
@@ -87,10 +111,11 @@ msgstr ""
 "d'informations"
 
 #: handlers/role.py:33
-msgid "To give you a role, send: ROLE <code1> <code2>"
-msgstr "Pour vous attribuer un role, envoyez: ROLE <code1> <code2>"
+#, fuzzy
+msgid "To give you a role, send: ROLE <code>"
+msgstr "Pour vous attribuer un role, envoyez: ROLE <code>"
 
-#: handlers/role.py:60
+#: handlers/role.py:59
 #, python-format
 msgid ""
 "These roles do not exist: '%(roles)s'. Retry after correcting or removing "
@@ -99,20 +124,34 @@ msgstr ""
 "Ces roles n'existent pas: '%(roles)s' Réessayez après les avoir corrigés ou "
 "retirés."
 
-#: handlers/role.py:65
+#: handlers/role.py:72
 #, fuzzy, python-format
-msgid "You are now: '%(roles)s'."
+msgid "You are now: '%(to_add)s'. "
 msgstr "Vous êtes maintenant : '%(roles)s'."
 
-#: handlers/role.py:68
-#, fuzzy
-msgid " You already have the other roles."
-msgstr " Vous avez déjà les autres roles."
+#: handlers/role.py:76
+#, fuzzy, python-format
+msgid "You are not anymore: '%(to_remove)s'. "
+msgstr "Vous n'êtes plus : '%(roles)s'."
 
-#: handlers/role.py:72
+#: handlers/roles.py:38
+msgid "ROLES must be sent with nothing else. Did you mean ROLE (singular)?"
+msgstr ""
+"ROLES doit être envoyé sans rien après. Vouliez vous dire ROLE (au "
+"singulier) ?"
+
+#: handlers/roles.py:44
+#, fuzzy, python-format
+msgid "You are: '%(roles)s'. "
+msgstr "Vous êtes maintenant : '%(roles)s'."
+
+#: handlers/roles.py:47
 #, fuzzy
-msgid "You already have these roles."
-msgstr " Vous avez déjà ces roles."
+msgid "You don't have any role yet. Send: 'ROLE <code>' to add one."
+msgstr "Pour vous attribuer un role, envoyez: ROLE <code1> <code2>"
 
 #~ msgid "French"
 #~ msgstr "Français"
+
+#~ msgid "English"
+#~ msgstr "Anglais"
