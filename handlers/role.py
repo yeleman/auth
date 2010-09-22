@@ -10,6 +10,7 @@ from django.conf import settings
 
 
 from ..decorators import registration_required
+from ..models import Role
 
 
 class RoleHandler(KeywordHandlerI18n):
@@ -38,5 +39,34 @@ class RoleHandler(KeywordHandlerI18n):
         conn = self.msg.connection
         contact = conn.contact
         
+        roles_code = (self.clean_string(code) for code in text.split())
+        roles = set()
+        roles_with_error = set()
+        contact_has_roles = set()
+        
+        for code in roles_code:
+            try:
+                role = Role.objects.get(code=code)
+            except Role.DoesNotExist:
+                roles_with_error.add(code)
+            else:
+                if contact.has_role(role):
+                    contact_has_roles.add(role)
+                else:
+                    roles.add(role)
+                    contact.role_set.add(role)
+            
+        if roles_with_error:    
+            return self.respond(_(u"These roles do not exist: '%(roles)s'. "\
+                                  u"Retry after correcting or removing them.") % {
+                                   'roles': "', '".join(roles_with_error)})
+        
+        if roles:                           
+            msg = _(u"You are now: '%(roles)s'.")
+            
+            if contact_has_roles:
+                msg += _(u" You already have the other roles.")
 
-        self.respond("test")
+            self.respond(msg % {'roles': ", ".join(unicode(r) for r in roles)})
+        else:
+            self.respond(_(u"You already have these roles."))

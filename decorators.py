@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4
+
+
 """
     Decorator to check for credential before handling
 """
@@ -9,6 +14,9 @@ from django.contrib.contenttypes.models import ContentType
 
 from .models import Role
 
+from utils import require_registration, require_role
+
+
 def registration_required(carry_on=False):
     """
         Put it before handle, will check if the user is registered.
@@ -19,17 +27,10 @@ def registration_required(carry_on=False):
     def decorator(func):
     
         def wrapper(self, *args, **kwargs):
+        
+            require_registration(self.msg, carry_on)
 
-            contact = self.msg.connection.contact
-            
-            if contact and contact.is_registered():
-                return func(self, *args, **kwargs)
-                
-            if carry_on:
-                return False
-                
-            return self.respond(_(u"You must be registered to do this. Send: "\
-                           u"REGISTER <first name> <last name>"))
+            return func(self, *args, **kwargs)
     
         return update_wrapper(wrapper, func)
 
@@ -48,35 +49,9 @@ def role_required(role=None, group=None, context=None, carry_on=False) :
 
         def wrapper(self, *args, **kwargs) :
         
-            roles = Role.objects.all()
-
-            if role:
-                role_obj = roles.get(code=getattr(role, 'code', role))
-            else:
-                if not (group and context):
-                    raise ValueError(u'This decorator expects role '\
-                                     u'or group AND context')
-                
-                ctype = ContentType.objects.get_for_model(context)
-                role_obj = roles.get(group__name=getattr(group, 'name', group),
-                                 context_type=ctype, 
-                                 context_id=context.id)
-                    
-            contact = self.msg.connection.contact
+            require_role(self.msg, role, group, context, carry_on)
             
-            if not contact or not contact.is_registered():
-                return self.respond(_(u"You must be registered to do this. Send: "\
-                           u"REGISTER <first name> <last name>"))
-               
-            if contact.has_role(role_obj):
-                return func(self, *args, **kwargs)
-            
-            else:
-                if carry_on:
-                    return False
-                    
-                return self.respond(_(u"You must be %(role)s to do this") % {
-                                      'role': role_obj})
+            return func(self, *args, **kwargs)
             
         return update_wrapper(wrapper, func)
 

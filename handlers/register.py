@@ -58,13 +58,6 @@ class RegisterHandler(KeywordHandlerI18n):
         self.respond(_(u"To register, send: JOIN <NAME>"))
 
 
-    def flatten_name(self, name):
-        """
-            Return a lowercase name extra spaces.
-        """
-        return " ".join(name.lower().strip().split())
-        
-
     def handle(self, text, keyword, lang_code):
     
         conn = self.msg.connection
@@ -72,7 +65,7 @@ class RegisterHandler(KeywordHandlerI18n):
         
         if contact:
         
-            if self.flatten_name(contact.name) == self.flatten_name(text):
+            if self.flatten_string(contact.name) == self.flatten_string(text):
                 msg =  _(u"You are already registered, %(name)s") % {
                         'name': text}
            

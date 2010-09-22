@@ -14,6 +14,44 @@ from rapidsms.models import Contact
 from code_generator.fields import CodeField
 
 
+class RoleManager(models.Manager):
+
+    def match(self, role=None, group=None, context=None):
+        """
+            Filter according to role/role code or group/group name or context.
+        """
+        
+        roles = self.all()
+        
+        if role:
+            roles = roles.filter(code=getattr(role, 'code', role))
+        else:
+            if not (group or context):
+                raise ValueError(u'This method expects at least one argument')
+            
+            if group:
+                roles = roles.filter(group__name=getattr(group, 'name', group))
+            
+            if context:
+                ctype = ContentType.objects.get_for_model(context)
+                roles = roles.filter(context_type=ctype, context_id=context.id)
+            
+        return roles
+        
+        
+    def get_role(self, role=None, group=None, context=None):
+        """
+            Returns the role matching role/role code or group/group name AND
+            context
+        """
+        
+        if not role and not (group and context):
+            raise ValueError(u'This method expects role or group AND context')
+            
+        return self.match(role, group, context).get()
+
+
+
 class Role(models.Model):
     
     code = CodeField(verbose_name=__("Code"),  max_length=12, prefix='r')
@@ -24,6 +62,7 @@ class Role(models.Model):
     context_id = models.PositiveIntegerField()
     context = generic.GenericForeignKey('context_type', 'context_id')
     
+    objects = RoleManager()
     
     class Meta:
         unique_together = (("context_type", "context_id", "group"),)
@@ -41,7 +80,7 @@ class Role(models.Model):
         
     
     def __unicode__(self):
-        return _(u"%(group)s for %(context)s") % {
+        return _(u"%(group)s of %(context)s") % {
                  'group': _(unicode(self.group)),
                  'context': _(unicode(self.context))}
       

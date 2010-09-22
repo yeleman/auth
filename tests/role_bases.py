@@ -44,7 +44,7 @@ class RoleBasesTests(TestCase):
         
     
     def test_you_can_print_roles(self):
-        self.assertEqual(str(self.role), "Webmaster for www.superwebsite.org") 
+        self.assertEqual(str(self.role), "Webmaster of www.superwebsite.org") 
         
         
     def test_a_user_is_created_when_a_contact_doesnt_have_one(self):
@@ -203,7 +203,7 @@ class RoleBasesTests(TestCase):
         self.assertFalse(self.contact.has_role(context=site, 
                                               group=self.group.name))
         self.assertFalse(self.contact.has_role(context=self.site, 
-                                              group=group))
+                                               group=group))
         self.assertFalse(self.contact.has_role(context=self.site, 
                                               group=group.name))
                                               

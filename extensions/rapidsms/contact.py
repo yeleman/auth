@@ -69,7 +69,6 @@ class WebContact(models.Model):
                                                          'contact': contact}))
        
         
-        
     def has_role(self, role=None, group=None, context=None):
         """
             Check if this contact has this role. Will try to match either
@@ -80,22 +79,7 @@ class WebContact(models.Model):
             Group can be either the group name of the group object.
         """
     
-        roles = self.role_set.all()
-        
-        if role:
-            return roles.filter(code=getattr(role, 'code', role)).exists()
-        else:
-            if not (group or context):
-                raise ValueError(u'This method expects at least one argument')
-            
-            if group:
-                roles = roles.filter(group__name=getattr(group, 'name', group))
-            
-            if context:
-                ctype = ContentType.objects.get_for_model(context)
-                roles = roles.filter(context_type=ctype, context_id=context.id)
-            
-        return roles.exists()
+        return self.role_set.match(role, group, context).exists()
         
         
     def roles_count(self, group=None, context=None):
@@ -109,14 +93,7 @@ class WebContact(models.Model):
         if not (bool(group) ^ bool(context)):
             raise ValueError(u'This method expects one and only argument')
         
-        if group:
-            group_name = getattr(group, 'name', group)
-            return self.role_set.filter(group__name=group_name).count()
-        
-        if context:
-            ctype = ContentType.objects.get_for_model(context)
-            return self.role_set.filter(context_type=ctype, 
-                                     context_id=context.id).count()
+        return self.role_set.match(group=group, context=context).count()
             
     
     def add_role(self, role=None, group=None, context=None, create=False):
@@ -139,33 +116,25 @@ class WebContact(models.Model):
         
         role_mgr = self.role_set.model.objects
         
-        if role:
-            self.role_set.add(role_mgr.get(code=getattr(role, 'code', role)))
+        if not create:
+            return self.role_set.add(role_mgr.get_role(role, group, context)) 
             
-        else:
-            if not (group or context):
-                raise ValueError(u'You must provide a role or a group '\
-                                 u'AND a context')
+        if not (group or context):
+            raise ValueError(u'You must provide a role or a group '\
+                             u'AND a context') 
+
+        gr_name = getattr(group, 'name', group)
+        ctype = ContentType.objects.get_for_model(context)
+
+        group, group_created = Group.objects.get_or_create(name=gr_name)
         
-            gr_name = getattr(group, 'name', group)
-            ctype = ContentType.objects.get_for_model(context)
-        
-            if not create:
-                group = Group.objects.get(name=gr_name)
-                role = role_mgr.get(group=group, context_type=ctype, 
-                                                 context_id=context.id)
-                self.role_set.add(role) 
-            
-            else:   
-                group, group_created = Group.objects.get_or_create(name=gr_name)
-                
-                role, role_created = role_mgr.get_or_create(group=group,
-                                                            context_type=ctype, 
-                                                          context_id=context.id)
-            
-                self.role_set.add(role) 
-                                                                   
-                return role, role_created, group_created
+        role, role_created = role_mgr.get_or_create(group=group,
+                                                    context_type=ctype, 
+                                                  context_id=context.id)
+
+        self.role_set.add(role) 
+                                                           
+        return role, role_created, group_created
         
 
     def remove_role(self, role=None, group=None, context=None):
@@ -179,25 +148,10 @@ class WebContact(models.Model):
             If the group/role doesn't exists, raises DoesNotExist
                 
         """
-        
-        role_mgr = self.role_set.model.objects
-        
-        if role:
-            self.role_set.remove(role_mgr.get(code=getattr(role, 'code', role)))
-            
-        else:
-            if not (group or context):
-                raise ValueError(u'You must provide a role or a group '\
-                                 u'AND a context')
-        
-            group_name = getattr(group, 'name', group)
-                
-            ctype = ContentType.objects.get_for_model(context)
-        
-            group = Group.objects.get(name=group_name)
-            role = role_mgr.get(group=group, context_type=ctype, 
-                                             context_id=context.id)
-            self.role_set.remove(role) 
+
+        self.role_set.remove(self.role_set.model.objects.get_role(role, 
+                                                                  group, 
+                                                                  context)) 
        
             
     def is_registered(self):

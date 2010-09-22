@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-20 20:05+0000\n"
+"POT-Creation-Date: 2010-09-20 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,8 +39,8 @@ msgstr "Envoyez un <em>fichier texte</em> "
 
 #: models.py:44
 #, python-format
-msgid "%(group)s for %(context)s"
-msgstr "%(group)s pour %(context)s"
+msgid "%(group)s of %(context)s"
+msgstr "%(group)s de %(context)s"
 
 #: extensions/rapidsms/contact.py:66
 #, python-format
@@ -51,12 +51,12 @@ msgstr "L'utilisateur %(user)s est déjà associé avec le contact %(contact)s"
 msgid "To set your language, send: LANGUAGE <CODE>"
 msgstr "Pour choisir votre langue, envoyez: LANGUE <CODE>"
 
-#: handlers/language.py:57
+#: handlers/language.py:54
 #, python-format
 msgid "I will speak to you in %(language)s."
 msgstr "Nous communiquerons désormais avec vous en %(language)s."
 
-#: handlers/language.py:62
+#: handlers/language.py:59
 #, python-format
 msgid "Sorry, I don't speak \"%(language)s\"."
 msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
@@ -65,31 +65,54 @@ msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
 msgid "To register, send: JOIN <NAME>"
 msgstr "Pour vous enregistrer, envoyez : INSCRIPTION <Prenom> <Nom>"
 
-#: handlers/register.py:76
+#: handlers/register.py:69
 #, python-format
 msgid "You are already registered, %(name)s"
 msgstr "Vous êtes déjà enregistré, %(name)s"
 
-#: handlers/register.py:80
+#: handlers/register.py:73
 #, python-format
 msgid "We changed your name from, '%(old_name)s' to '%(new_name)s'"
 msgstr "Votre nom a été changé de '%(old_name)s' à '%(new_name)s'"
 
-#: handlers/register.py:91
+#: handlers/register.py:84
 #, python-format
 msgid "Thank you for registering, %(name)s!"
 msgstr "Merci de vous être enregistré, %(name)s!"
 
-#: handlers/register.py:94
+#: handlers/register.py:87
 msgid "Registration are closed. Ask your administrator for more informations"
 msgstr ""
 "Les inscriptions sont fermées. Demandez à votre administrateur pour plus "
 "d'informations"
 
-#: handlers/role.py:32
+#: handlers/role.py:33
 msgid "To give you a role, send: ROLE <code1> <code2>"
 msgstr "Pour vous attribuer un role, envoyez: ROLE <code1> <code2>"
 
+#: handlers/role.py:60
+#, python-format
+msgid ""
+"These roles do not exist: '%(roles)s'. Retry after correcting or removing "
+"them."
+msgstr ""
+"Ces roles n'existent pas: '%(roles)s' Réessayez après les avoir corrigés ou "
+"retirés."
+
+#: handlers/role.py:65
+#, fuzzy, python-format
+msgid "You are now: '%(roles)s'."
+msgstr "Vous êtes maintenant : '%(roles)s'."
+
+#: handlers/role.py:68
+#, fuzzy
+msgid " You already have the other roles."
+msgstr " Vous avez déjà les autres roles."
+
+#: handlers/role.py:72
+#, fuzzy
+msgid "You already have these roles."
+msgstr " Vous avez déjà ces roles."
 
 #~ msgid "French"
 #~ msgstr "Français"
