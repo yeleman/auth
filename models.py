@@ -38,8 +38,8 @@ class RoleManager(models.Manager):
             
         return roles
         
-        
-    def get_role(self, role=None, group=None, context=None):
+    # todo: test create
+    def get_role(self, role=None, group=None, context=None, create=False):
         """
             Returns the role matching role/role code or group/group name AND
             context
@@ -47,8 +47,24 @@ class RoleManager(models.Manager):
         
         if not role and not (group and context):
             raise ValueError(u'This method expects role or group AND context')
+         
+        if not create:   
+            return self.match(role, group, context).get()
             
-        return self.match(role, group, context).get()
+        if not (group or context):
+            raise ValueError(u'You must provide a role or a group '\
+                             u'AND a context') 
+
+        gr_name = getattr(group, 'name', group)
+        ctype = ContentType.objects.get_for_model(context)
+
+        group, group_created = Group.objects.get_or_create(name=gr_name)
+        
+        role, role_created = Role.objects.get_or_create(group=group,
+                                                        context_type=ctype, 
+                                                        context_id=context.id)
+
+        return role, role_created, group_created
 
 
 

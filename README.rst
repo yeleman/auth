@@ -175,12 +175,14 @@ Password management
     - change password
     
 
-
-
-
-
 TODO
 =====
+
+More commands
+--------------
+
+    - unregister (would just disable the user, is_registered should manage that)
+    - register after unregister (could enable the user)
 
 More shortcuts
 -----------------

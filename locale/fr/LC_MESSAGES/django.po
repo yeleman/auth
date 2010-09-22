@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-22 10:56+0200\n"
+"POT-Creation-Date: 2010-09-22 15:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr "Envoyer fichier CSV"
 msgid "Upload a <em>plain text file</em> "
 msgstr "Envoyez un <em>fichier texte</em> "
 
-#: models.py:83
+#: models.py:99
 #, python-format
 msgid "%(group)s of %(context)s"
 msgstr "%(group)s de %(context)s"
@@ -61,26 +61,26 @@ msgstr "Nous communiquerons désormais avec vous en %(language)s."
 msgid "Sorry, I don't speak \"%(language)s\"."
 msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
 
-#: handlers/languages.py:40 handlers/languages.py:43
+#: handlers/languages.py:42
 #, fuzzy, python-format
 msgid ""
 "%(keyword)s must be sent with nothing else. Did you mean %(keyword_sing)s "
 "(singular)?"
 msgstr ""
-"%(keyword)s doit être envoyé sans rien après. Vouliez vous dire %(keyword_sing)s (au "
-"singulier) ?"
+"%(keyword)s doit être envoyé sans rien après. Vouliez vous dire %"
+"(keyword_sing)s (au singulier) ?"
 
-#: handlers/languages.py:53
+#: handlers/languages.py:52
 #, python-format
 msgid "Your prefered language is: '%(language)s'. "
 msgstr "Vous langue préférée est : '%(language)s'. "
 
-#: handlers/languages.py:56
+#: handlers/languages.py:55
 #, python-format
 msgid "The current language is: '%(language)s'. "
 msgstr "La langue actuelle est : '%(language)s'. "
 
-#: handlers/languages.py:59
+#: handlers/languages.py:58
 #, python-format
 msgid "The language for the keyword '%(keyword)s' is: %(language)s."
 msgstr "La langue pour le mot clé '%(keyword)s' est : %(language)s."
@@ -104,11 +104,23 @@ msgstr "Votre nom a été changé de '%(old_name)s' à '%(new_name)s'"
 msgid "Thank you for registering, %(name)s!"
 msgstr "Merci de vous être enregistré, %(name)s!"
 
-#: handlers/register.py:87
+#: handlers/register.py:87 handlers/register_with_role.py:64
 msgid "Registration are closed. Ask your administrator for more informations"
 msgstr ""
 "Les inscriptions sont fermées. Demandez à votre administrateur pour plus "
 "d'informations"
+
+#: handlers/register_with_role.py:53
+#, fuzzy, python-format
+msgid ""
+"You are already registered, %(name)s. To change your name, send: REGISTER"
+msgstr "Vous êtes déjà enregistré, %(name)s. Pour changer votre nom, envoyez"
+" INSCRIPTION"
+
+#: handlers/register_with_role.py:61
+#, python-format
+msgid "%(name)s, you are now registered as: %(role)s"
+msgstr "%(name)s, vous êtes maintenant inscrit(e) en tant que : %(role)s"
 
 #: handlers/role.py:33
 #, fuzzy

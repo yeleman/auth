@@ -46,6 +46,7 @@ class LanguagesHandlerI18n(KeywordHandlerI18n):
     
         msg = ''
         contact = Contact.objects.get(pk=self.msg.connection.contact.pk)
+        
         languages = dict(settings.LANGUAGES)
         
         if contact and contact.is_registered():
