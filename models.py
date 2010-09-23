@@ -96,7 +96,7 @@ class Role(models.Model):
         
     
     def __unicode__(self):
-        return _(u"%(group)s of %(context)s") % {
+        return _(u"%(group)s (%(context)s)") % {
                  'group': _(unicode(self.group)),
                  'context': _(unicode(self.context))}
       
