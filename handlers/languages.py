@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4
 
 
@@ -45,11 +46,11 @@ class LanguagesHandlerI18n(KeywordHandlerI18n):
                                 'keyword_sing': keyword.upper().rstrip('S')})
     
         msg = ''
-        contact = Contact.objects.get(pk=self.msg.connection.contact.pk)
-        
+        contact = self.msg.connection.contact
         languages = dict(settings.LANGUAGES)
         
         if contact and contact.is_registered():
+            contact = Contact.objects.get(pk=contact.pk)
             msg += _(u"Your prefered language is: '%(language)s'. ") % {
                     'language': _(languages[contact.language])}
     

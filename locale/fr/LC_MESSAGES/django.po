@@ -62,7 +62,6 @@ msgid "Sorry, I don't speak \"%(language)s\"."
 msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
 
 #: handlers/languages.py:42
-#, fuzzy, python-format
 msgid ""
 "%(keyword)s must be sent with nothing else. Did you mean %(keyword_sing)s "
 "(singular)?"
@@ -111,7 +110,6 @@ msgstr ""
 "d'informations"
 
 #: handlers/register_with_role.py:53
-#, fuzzy, python-format
 msgid ""
 "You are already registered, %(name)s. To change your name, send: REGISTER"
 msgstr "Vous êtes déjà enregistré, %(name)s. Pour changer votre nom, envoyez"
@@ -123,7 +121,6 @@ msgid "%(name)s, you are now registered as: %(role)s"
 msgstr "%(name)s, vous êtes maintenant inscrit(e) en tant que : %(role)s"
 
 #: handlers/role.py:33
-#, fuzzy
 msgid "To give you a role, send: ROLE <code>"
 msgstr "Pour vous attribuer un role, envoyez: ROLE <code>"
 
@@ -137,12 +134,10 @@ msgstr ""
 "retirés."
 
 #: handlers/role.py:72
-#, fuzzy, python-format
 msgid "You are now: '%(to_add)s'. "
 msgstr "Vous êtes maintenant : '%(roles)s'."
 
 #: handlers/role.py:76
-#, fuzzy, python-format
 msgid "You are not anymore: '%(to_remove)s'. "
 msgstr "Vous n'êtes plus : '%(roles)s'."
 
@@ -153,12 +148,10 @@ msgstr ""
 "singulier) ?"
 
 #: handlers/roles.py:44
-#, fuzzy, python-format
 msgid "You are: '%(roles)s'. "
 msgstr "Vous êtes maintenant : '%(roles)s'."
 
 #: handlers/roles.py:47
-#, fuzzy
 msgid "You don't have any role yet. Send: 'ROLE <code>' to add one."
 msgstr "Pour vous attribuer un role, envoyez: ROLE <code1> <code2>"
 
