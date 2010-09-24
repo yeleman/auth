@@ -20,6 +20,9 @@ except ImportError:
         return 0
 else:
     
+    if not Configuration.objects.filter(key='close_registrations').exists():
+        Configuration.objects.create(key='close_registrations', value='0')
+    
     def are_registrations_closed():
         """
             Check if registration are opened or not

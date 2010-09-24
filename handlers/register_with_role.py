@@ -65,5 +65,4 @@ class RegisterWithRoleHandler(CallbackHandler):
                 msg = _(u"Registration are closed. Ask your administrator for "\
                         u"more informations")
             
-
         self.respond(msg)

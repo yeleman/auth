@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-22 15:55+0200\n"
+"POT-Creation-Date: 2010-09-24 10:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,23 +26,23 @@ msgid "Upload a <em>plain text file</em> "
 msgstr "Envoyez un <em>fichier texte</em> "
 
 #: models.py:99
-#, python-format
-msgid "%(group)s of %(context)s"
+#, fuzzy, python-format
+msgid "%(group)s (%(context)s)"
 msgstr "%(group)s de %(context)s"
 
-#: utils.py:36
+#: utils.py:39
 msgid ""
 "You must be registered to do this. Send: REGISTER <first name> <last name>"
 msgstr ""
 "Vous devez être enregistré pour faire cela. Envoyez: INSCRIPTION <prénom> "
 "<nom>"
 
-#: utils.py:54
+#: utils.py:57
 #, python-format
 msgid "You must be %(role)s to do this"
 msgstr "Vous devez être %(role)s pour faire cela"
 
-#: extensions/rapidsms/contact.py:66
+#: extensions/rapidsms/contact.py:68
 #, python-format
 msgid "The user %(user)s is already associated with the contact %(contact)s"
 msgstr "L'utilisateur %(user)s est déjà associé avec le contact %(contact)s"
@@ -61,7 +61,8 @@ msgstr "Nous communiquerons désormais avec vous en %(language)s."
 msgid "Sorry, I don't speak \"%(language)s\"."
 msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
 
-#: handlers/languages.py:42
+#: handlers/languages.py:43
+#, python-format
 msgid ""
 "%(keyword)s must be sent with nothing else. Did you mean %(keyword_sing)s "
 "(singular)?"
@@ -69,17 +70,17 @@ msgstr ""
 "%(keyword)s doit être envoyé sans rien après. Vouliez vous dire %"
 "(keyword_sing)s (au singulier) ?"
 
-#: handlers/languages.py:52
+#: handlers/languages.py:54
 #, python-format
 msgid "Your prefered language is: '%(language)s'. "
 msgstr "Vous langue préférée est : '%(language)s'. "
 
-#: handlers/languages.py:55
+#: handlers/languages.py:57
 #, python-format
 msgid "The current language is: '%(language)s'. "
 msgstr "La langue actuelle est : '%(language)s'. "
 
-#: handlers/languages.py:58
+#: handlers/languages.py:60
 #, python-format
 msgid "The language for the keyword '%(keyword)s' is: %(language)s."
 msgstr "La langue pour le mot clé '%(keyword)s' est : %(language)s."
@@ -88,34 +89,36 @@ msgstr "La langue pour le mot clé '%(keyword)s' est : %(language)s."
 msgid "To register, send: JOIN <NAME>"
 msgstr "Pour vous enregistrer, envoyez : INSCRIPTION <Prenom> <Nom>"
 
-#: handlers/register.py:69
+#: handlers/register.py:70
 #, python-format
 msgid "You are already registered, %(name)s"
 msgstr "Vous êtes déjà enregistré, %(name)s"
 
-#: handlers/register.py:73
+#: handlers/register.py:74
 #, python-format
 msgid "We changed your name from, '%(old_name)s' to '%(new_name)s'"
 msgstr "Votre nom a été changé de '%(old_name)s' à '%(new_name)s'"
 
-#: handlers/register.py:84
+#: handlers/register.py:83
 #, python-format
 msgid "Thank you for registering, %(name)s!"
 msgstr "Merci de vous être enregistré, %(name)s!"
 
-#: handlers/register.py:87 handlers/register_with_role.py:64
+#: handlers/register.py:86 handlers/register_with_role.py:65
 msgid "Registration are closed. Ask your administrator for more informations"
 msgstr ""
 "Les inscriptions sont fermées. Demandez à votre administrateur pour plus "
 "d'informations"
 
-#: handlers/register_with_role.py:53
+#: handlers/register_with_role.py:54
+#, python-format
 msgid ""
 "You are already registered, %(name)s. To change your name, send: REGISTER"
-msgstr "Vous êtes déjà enregistré, %(name)s. Pour changer votre nom, envoyez"
-" INSCRIPTION"
+msgstr ""
+"Vous êtes déjà enregistré, %(name)s. Pour changer votre nom, envoyez "
+"INSCRIPTION"
 
-#: handlers/register_with_role.py:61
+#: handlers/register_with_role.py:62
 #, python-format
 msgid "%(name)s, you are now registered as: %(role)s"
 msgstr "%(name)s, vous êtes maintenant inscrit(e) en tant que : %(role)s"
@@ -134,10 +137,12 @@ msgstr ""
 "retirés."
 
 #: handlers/role.py:72
+#, fuzzy, python-format
 msgid "You are now: '%(to_add)s'. "
 msgstr "Vous êtes maintenant : '%(roles)s'."
 
 #: handlers/role.py:76
+#, fuzzy, python-format
 msgid "You are not anymore: '%(to_remove)s'. "
 msgstr "Vous n'êtes plus : '%(roles)s'."
 
@@ -148,6 +153,7 @@ msgstr ""
 "singulier) ?"
 
 #: handlers/roles.py:44
+#, python-format
 msgid "You are: '%(roles)s'. "
 msgstr "Vous êtes maintenant : '%(roles)s'."
 
