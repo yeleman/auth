@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 10:06+0200\n"
+"POT-Creation-Date: 2010-10-02 11:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid "Upload a <em>plain text file</em> "
 msgstr "Envoyez un <em>fichier texte</em> "
 
 #: models.py:99
-#, fuzzy, python-format
+#, python-format
 msgid "%(group)s (%(context)s)"
 msgstr "%(group)s de %(context)s"
 
@@ -42,7 +42,7 @@ msgstr ""
 msgid "You must be %(role)s to do this"
 msgstr "Vous devez être %(role)s pour faire cela"
 
-#: extensions/rapidsms/contact.py:68
+#: extensions/rapidsms/contact.py:64
 #, python-format
 msgid "The user %(user)s is already associated with the contact %(contact)s"
 msgstr "L'utilisateur %(user)s est déjà associé avec le contact %(contact)s"
@@ -137,12 +137,12 @@ msgstr ""
 "retirés."
 
 #: handlers/role.py:72
-#, fuzzy, python-format
+#,  python-format
 msgid "You are now: '%(to_add)s'. "
 msgstr "Vous êtes maintenant : '%(roles)s'."
 
 #: handlers/role.py:76
-#, fuzzy, python-format
+#, python-format
 msgid "You are not anymore: '%(to_remove)s'. "
 msgstr "Vous n'êtes plus : '%(roles)s'."
 

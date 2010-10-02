@@ -25,17 +25,13 @@ class WebContact(models.Model):
             default connection identity as a username of some mix between
             ids and the contact name slug.
         """
-    
         try:
-            from rapidsms.models import *
             username = self.default_connection.identity
         except AttributeError:
             username = slugify(self.name)
-            if User.objects.filter(username=username).exists():
-                    username = "%s_%s" % ('ID', slugify(self.name)) 
-        else:
-            if User.objects.filter(username=username).exists():
-                username = "%s_%s" % (username, slugify(self.name),) 
+         
+        if User.objects.filter(username=username).exists():
+            username = "%s_%s" % ('ID', username) 
                 
         return User.objects.create(username=username)
 

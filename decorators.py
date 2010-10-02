@@ -4,7 +4,18 @@
 
 
 """
-    Decorator to check for credential before handling
+    Decorator to check for credential before handling.
+    
+    
+    e.g:
+    
+    @registration_required()
+    def handle(self):
+        bla
+        
+      
+    Don't forget the parenthesis after the decorator, or you'll get 
+    unexpected errors
 """
 
 from functools import update_wrapper

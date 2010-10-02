@@ -3,7 +3,7 @@
 # vim: ai ts=4 sts=4 et sw=4
 
 
-from handlers_i18n.handlers.keyword import KeywordHandlerI18n
+from handlers_i18n.handlers.keyword import KeywordHandler
 from rapidsms.models import Contact
 from django.utils import translation
 from django.utils.translation import ugettext as _, activate
@@ -13,7 +13,7 @@ from django.conf import settings
 from ..decorators import registration_required
 
 
-class LanguagesHandlerI18n(KeywordHandlerI18n):
+class LanguagesHandler(KeywordHandler):
     """
     List langs
     """

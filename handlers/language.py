@@ -2,7 +2,7 @@
 # vim: ai ts=4 sts=4 et sw=4
 
 
-from handlers_i18n.handlers.keyword import KeywordHandlerI18n
+from handlers_i18n.handlers.keyword import KeywordHandler
 from rapidsms.models import Contact
 from django.utils import translation
 from django.utils.translation import ugettext as _, activate
@@ -12,7 +12,7 @@ from django.conf import settings
 from ..decorators import registration_required
 
 
-class LanguageHandlerI18n(KeywordHandlerI18n):
+class LanguageHandler(KeywordHandler):
     """
     Allow remote users to set their preferred language, by updating the
     ``language`` field of the Contact associated with their connection.

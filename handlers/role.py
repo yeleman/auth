@@ -3,7 +3,7 @@
 # vim: ai ts=4 sts=4 et sw=4
 
 
-from handlers_i18n.handlers.keyword import KeywordHandlerI18n
+from handlers_i18n.handlers.keyword import KeywordHandler
 from rapidsms.models import Contact
 from django.utils.translation import ugettext as _
 from django.conf import settings
@@ -13,7 +13,7 @@ from ..decorators import registration_required
 from ..models import Role
 
 
-class RoleHandler(KeywordHandlerI18n):
+class RoleHandler(KeywordHandler):
     """
         Add a role
     """
