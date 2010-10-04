@@ -25,13 +25,14 @@ class WebContact(models.Model):
             default connection identity as a username of some mix between
             ids and the contact name slug.
         """
-        try:
-            username = self.default_connection.identity
-        except AttributeError:
-            username = slugify(self.name)
-         
-        if User.objects.filter(username=username).exists():
-            username = "%s_%s" % ('ID', username) 
+        username = slugify(self.name)
+        
+        while User.objects.filter(username=username).exists():
+            try:
+                s = username.split('_')
+                username = "%s_%s" % (s[:-1], int(s[-1]) + 1)
+            except (IndexError, ValueError):
+                username = username + "_1" 
                 
         return User.objects.create(username=username)
 
@@ -43,15 +44,6 @@ class WebContact(models.Model):
             self.user = self.generate_user()
             models.Model.save(self, *args, **kwargs)
             
-            # if the username starts with id, then it means we have to avoir
-            # duplicates by replacing it with the contact id
-            username = self.user.username
-            if username.startswith('ID_'):
-                self.user.username = username.replace('ID', str(self.id), 1)
-                models.Model.save(self)
-                
-            return
-
         else:
             # check for duplicate user usage among contacts
             try:

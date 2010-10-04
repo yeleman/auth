@@ -60,7 +60,6 @@ class RegisterHandler(KeywordHandler):
 
     def handle(self, text, keyword, lang_code):
     
-    
         conn = self.msg.connection
         contact = conn.contact
         
