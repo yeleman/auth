@@ -29,8 +29,8 @@ class WebContact(models.Model):
         
         while User.objects.filter(username=username).exists():
             try:
-                s = username.split('_')
-                username = "%s_%s" % (s[:-1], int(s[-1]) + 1)
+                s = username.rsplit('_', 1)
+                username = "%s_%s" % (s[0], int(s[1]) + 1)
             except (IndexError, ValueError):
                 username = username + "_1" 
                 

@@ -91,6 +91,20 @@ class RoleBasesTests(TestCase):
         user_name = "%s_%s" % ( contact.id, slugify('Lisa-Maria de la Bodega'))
         self.assertEqual(contact.user.username,  user_name)
 
+
+        # testing unicity
+        c = Contact.objects.create(name='moi')
+        self.assertEqual(c.name, 'moi')
+        c = Contact.objects.create(name='moi')
+        self.assertEqual(c.name, 'moi_1')
+        c = Contact.objects.create(name='moi')
+        self.assertEqual(c.name, 'moi_2')
+        c = Contact.objects.create(name='moi_')
+        self.assertEqual(c.name, 'moi_')
+        c = Contact.objects.create(name='moi_')
+        self.assertEqual(c.name, 'moi__1')
+
+
    
     def test_adding_a_role_adds_the_group_to_the_user(self):
         
