@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-02 11:13+0200\n"
+"POT-Creation-Date: 2010-10-05 17:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "You must be %(role)s to do this"
 msgstr "Vous devez être %(role)s pour faire cela"
 
-#: extensions/rapidsms/contact.py:64
+#: extensions/rapidsms/contact.py:56
 #, python-format
 msgid "The user %(user)s is already associated with the contact %(contact)s"
 msgstr "L'utilisateur %(user)s est déjà associé avec le contact %(contact)s"
@@ -89,28 +89,33 @@ msgstr "La langue pour le mot clé '%(keyword)s' est : %(language)s."
 msgid "To register, send: JOIN <NAME>"
 msgstr "Pour vous enregistrer, envoyez : INSCRIPTION <Prenom> <Nom>"
 
-#: handlers/register.py:70
+#: handlers/register.py:69
 #, python-format
 msgid "You are already registered, %(name)s"
 msgstr "Vous êtes déjà enregistré, %(name)s"
 
-#: handlers/register.py:74
+#: handlers/register.py:73
 #, python-format
 msgid "We changed your name from, '%(old_name)s' to '%(new_name)s'"
 msgstr "Votre nom a été changé de '%(old_name)s' à '%(new_name)s'"
 
-#: handlers/register.py:83
+#: handlers/register.py:82
 #, python-format
 msgid "Thank you for registering, %(name)s!"
 msgstr "Merci de vous être enregistré, %(name)s!"
 
-#: handlers/register.py:86 handlers/register_with_role.py:65
+#: handlers/register.py:85 handlers/register_with_role.py:93
 msgid "Registration are closed. Ask your administrator for more informations"
 msgstr ""
 "Les inscriptions sont fermées. Demandez à votre administrateur pour plus "
 "d'informations"
 
-#: handlers/register_with_role.py:54
+#: handlers/register_with_role.py:50
+#, fuzzy, python-format
+msgid "Sorry, I don't speak \"%(lang)s\"."
+msgstr "Désolé, je le connais pas ce langage :  \"%(language)s\""
+
+#: handlers/register_with_role.py:81
 #, python-format
 msgid ""
 "You are already registered, %(name)s. To change your name, send: REGISTER"
@@ -118,7 +123,7 @@ msgstr ""
 "Vous êtes déjà enregistré, %(name)s. Pour changer votre nom, envoyez "
 "INSCRIPTION"
 
-#: handlers/register_with_role.py:62
+#: handlers/register_with_role.py:90
 #, python-format
 msgid "%(name)s, you are now registered as: %(role)s"
 msgstr "%(name)s, vous êtes maintenant inscrit(e) en tant que : %(role)s"
@@ -137,14 +142,14 @@ msgstr ""
 "retirés."
 
 #: handlers/role.py:72
-#,  python-format
+#, python-format
 msgid "You are now: '%(to_add)s'. "
-msgstr "Vous êtes maintenant : '%(roles)s'."
+msgstr "Vous êtes maintenant : '%(to_add)s'."
 
 #: handlers/role.py:76
 #, python-format
 msgid "You are not anymore: '%(to_remove)s'. "
-msgstr "Vous n'êtes plus : '%(roles)s'."
+msgstr "Vous n'êtes plus : '%(to_remove)s'."
 
 #: handlers/roles.py:38
 msgid "ROLES must be sent with nothing else. Did you mean ROLE (singular)?"
