@@ -9,6 +9,7 @@ from django.conf import settings
 from rapidsms.models import Contact
 
 from handlers_i18n.handlers.callback import CallbackHandler
+from handlers_i18n.exceptions import ExitHandle
 
 from ..utils import are_registrations_closed
 from ..models import Role
@@ -46,7 +47,8 @@ class RegisterWithRoleHandler(CallbackHandler):
                 for code, name in settings.LANGUAGES:
                     if lang_code in (code.lower().strip(), name.lower().strip()):
                         return text, lang_code
-                return text, settings.LANGUAGE_CODE
+                raise ExitHandle(_(u'Sorry, I don\'t speak "%(lang)s".') % {
+                                    'lang': lang_code})
         return text, settings.LANGUAGE_CODE
     
 
